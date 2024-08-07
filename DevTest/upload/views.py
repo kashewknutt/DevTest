@@ -15,13 +15,16 @@ def upload_file(request):
         # Process the file
         df = pd.read_excel(fs.path(filename))
 
-        # Generate the summary report
         # Ensure we are summing only numeric columns
         numeric_cols = df.select_dtypes(include='number').columns
+
+        # Group by 'Cust State' and 'Cust Pin' and sum the numeric columns
         summary = df.groupby(['Cust State', 'Cust Pin'])[numeric_cols].sum().reset_index()
 
-        # Send the summary report via email
+        # Convert summary DataFrame to string
         email_body = summary.to_string(index=False)
+
+        # Send the summary report via email
         send_mail(
             subject='Python Assignment - Your Name',
             message=email_body,
