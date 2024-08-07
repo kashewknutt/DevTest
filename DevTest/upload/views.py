@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 def upload_file(request):
-    if request.method == 'POST' and request.FILES['file']:
+    if request.method == 'POST' and request.FILES.get('file'):
         file = request.FILES['file']
         email = request.POST['email']
         fs = FileSystemStorage()
@@ -14,12 +14,17 @@ def upload_file(request):
 
         # Process the file
         df = pd.read_excel(fs.path(filename))
+        print(df.columns)  # Print columns for debugging
 
-        # Ensure we are summing only numeric columns
+        # Prepare the summary report
         numeric_cols = df.select_dtypes(include='number').columns
-
-        # Group by 'Cust State' and 'Cust Pin' and sum the numeric columns
-        summary = df.groupby(['Cust State', 'Cust Pin'])[numeric_cols].sum().reset_index()
+        
+        # Handle potential column conflicts
+        try:
+            summary = df.groupby(['Cust State', 'Cust Pin'], as_index=False)[numeric_cols].sum()
+        except ValueError as e:
+            # Handle specific error and return it in the response
+            return render(request, 'upload/error.html', {'error': str(e)})
 
         # Convert summary DataFrame to string
         email_body = summary.to_string(index=False)
