@@ -58,6 +58,39 @@ Open a web browser and navigate to `http://localhost:8000/`
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `gunicorn DevTest.wsgi`
 
+## Pull Request Process
+
+1. **Fork the Repository:**
+   - Used the **Fork** button to fork my own copy of the repository.
+
+2. **Create a New Branch:**
+   - Navigated to my forked repository and created a new branch:
+     ```bash
+     git checkout -b DevTest
+     ```
+
+3. **Make Changes:**
+   - Implemented the necessary changes or additions in the branch.
+
+4. **Commit Changes:**
+   - Staged and then commited my changes:
+     ```bash
+     git add .
+     git commit -m "Added assignment code and documentation"
+     ```
+
+5. **Push Changes:**
+   - Pushed my changes to my forked repository:
+     ```bash
+     git push origin DevTest
+     ```
+
+6. **Create a Pull Request:**
+   - Went to the original repository on GitHub.
+   - Clicked on the **Pull Requests** tab and then **New Pull Request**.
+   - Selected my branch and submited the pull request with a description of the changes.
+
+
 ## Usage
 
 - **Website:** The application can be accessed at `https://devtest-qve5.onrender.com/`.
