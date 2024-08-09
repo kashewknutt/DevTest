@@ -1,62 +1,69 @@
-# 🐍 Medius Tech Pvt Ltd DevTest Repository
+# DevTest Django Application
 
-Welcome to the Themedius Backend repository! This repository contains the Python Django code for our backend application, powering the endpoints:
+## Overview
 
-- [devtest.themedius.ai](https://devtest.themedius.ai)
+This is a Django-based web application that allows users to upload Excel/CSV files, processes the data, generates a summary report, and emails the report to the specified email address. The application is deployed on Render for easy access and scalability.
 
+## Features
 
-It's designed to provide a solid foundation for building robust and scalable web applications.
+- **File Upload:** Users can upload Excel/CSV files.
+- **Data Processing:** The application processes the uploaded data and generates a summary report.
+- **Email Summary:** The summary report is sent to the user's email as the body of the email.
+- **User-Friendly Interface:** A simple, clean, and responsive interface for ease of use.
 
-## Table of Contents
-- [📋 Overview](#overview)
-- [🚀 Features](#features)
-- [⚙️ Setup](#setup)
-- [📝 API Documentation](#api-documentation)
-- [🤝 Contributing](#contributing)
-- [📄 License](#license)
+## Technologies Used
 
-## 📋 Overview
+- **Django:** The web framework used to build the application.
+- **pandas:** For processing Excel/CSV files and generating the summary report.
+- **Gunicorn:** WSGI HTTP server for serving the application in production.
 
-The Themedius Backend is a Python Django application that serves as the backbone for our services. It includes various features and endpoints to support the functionalities of:
+## Setup Instructions
 
-- [devtest.themedius.ai](https://devtest.themedius.ai): Endpoint for general API functionalities.
+### 1. Clone the Repository
 
+```bash
+git clone https://github.com/yourusername/DevTest.git
+cd DevTest
+```
+### 2. Install Dependencies
 
-## 🚀 Features
+Create a virtual environment (optional but recommended):
 
-- **User Authentication:** Secure user authentication system.
-- **API Endpoints:** Well-defined endpoints for handling general API requests.
-- **Campaign Management:** Functionality to create, update, and track campaigns.
+```bash
+python -m venv env
+source env/bin/activate  # On Windows, use `env\Scripts\activate`
+```
 
-## ⚙️ Setup
+Install the required packages
 
-To set up the Themedius Backend locally, follow these steps:
+```bash
+pip install -r requirements.txt
+```
 
-1. Clone this repository to your local machine.
-2. Python Version: 3.10
-3. Create a virtual environment and install dependencies:
-   ```bash
-   python -m venv enven
-   source enven/bin/activate  # On Windows, use `venv\Scripts\activate`
-   pip install -r requirements.txt
+### 3. Run the application
 
-4. Apply migrations and create the database:
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
+```bash
+python manage.py runserver
+```
 
-5. Run the development server:
-   ```bash
-   python manage.py runserver
+### 4. Access the application
 
-## 📝 API Documentation
+Open a web browser and navigate to `http://localhost:8000/`
 
-Detailed API documentation for each endpoint is available in the API Documentation file. Please refer to this documentation for information on request and response formats, authentication, and usage examples.
+## Deploying on Render
 
-## 🤝 Contributing
+1. Pushed code to GitHub.
+2. Connected GitHub repository to Render.
+3. Configured the web service with the following settings:
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `gunicorn DevTest.wsgi`
 
-We welcome contributions from the Themedius team. If you find issues or have improvements to suggest, please follow our [contribution guidelines](CONTRIBUTING.md).
+## Usage
 
-## 📄 License
+- **Website:** The application can be accessed at `https://devtest-qve5.onrender.com/`.
+- **Upload File:** Visit the landing page to upload an Excel/CSV file.
+- **View Summary:** After successful upload, a summary report will be displayed and emailed to you.
 
-This repository is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+## Contact
+
+For any inquiries or issues, please reach out to [kashewknutt@gmail.com](mailto:kashewknutt@gmail.com).
